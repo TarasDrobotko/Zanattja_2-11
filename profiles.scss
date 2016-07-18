@@ -1,0 +1,215 @@
+@mixin stars1 {
+    width: 0;
+    height: 0;
+    margin: 0px 0;
+    color: hsl(12, 100%, 55%);
+    position: relative;
+    display: inline-block;
+    border: {
+    right: 10px solid transparent;
+    bottom: 7px solid #ff471a;
+    left: 10px solid transparent;
+    }
+    -moz-transform: rotate(35deg);
+    -webkit-transform: rotate(35deg);
+    -ms-transform: rotate(35deg);
+    -o-transform: rotate(35deg);
+}
+
+@mixin stars2 {
+height: 0;
+    width: 0;
+    position: absolute;
+    display: inline-block;
+    border: {
+    bottom: 8px solid #ff471a;
+    left: 3px solid transparent;
+    right: 3px solid transparent;
+    }
+    content: '';
+    -webkit-transform: rotate(-35deg);
+    -moz-transform: rotate(-35deg);
+    -ms-transform: rotate(-35deg);
+    -o-transform: rotate(-35deg);
+  }
+
+@mixin stars3 {
+content: '';
+    width: 0;
+    height: 0;
+    position: absolute;
+    display: inline-block;
+    color: #ff471a;
+    border: {
+    right: 10px solid transparent;
+    bottom: 7px solid #ff471a;
+    left: 10px solid transparent;
+    }
+    -webkit-transform: rotate(-70deg);
+    -moz-transform: rotate(-70deg);
+    -ms-transform: rotate(-70deg);
+    -o-transform: rotate(-70deg);
+}
+
+@mixin pentagons1 {
+ display: inline-block;
+    width: 10px;
+    top: 0px;
+    position: relative;
+    border-width: 10px 3px 0;
+    border-style: solid;
+    border-color: #ff471a transparent;
+    border-radius: 3px;
+    -webkit-transform: 3px;
+    -ms-transform: 3px;
+    -o-transform: 3px;
+}
+
+@mixin pentagons2 {
+display: inline-block;
+    content: "";
+    height: 0;
+    width: 0;
+    position: absolute;
+    top: -15px;
+    left: -5px;
+    border: {
+    width: 0 10px 8px;
+    style: solid;
+    color: transparent transparent #ff471a;
+    radius: 3px;
+    }
+    -webkit-transform: 3px;
+    -ms-transform: 3px;
+    -o-transform: 3px;
+}
+
+@mixin pentagons3 {
+display: inline-block;
+    content: "";
+    height: 0;
+    width: 0;
+    position: absolute;
+    top: -15px;
+    left: -5px;
+    border: {
+    width: 0 10px 8px;
+    style: solid;
+    radius: 3px;
+    }
+    -webkit-transform: 3px;
+    -ms-transform: 3px;
+    -o-transform: 3px;
+}
+
+%border{
+border-radius: 5px;
+border: 1px solid #bfbfbf;
+}
+
+#student1, #student2, #student3 {
+.Text {
+   padding-top: 30px;
+   font-size: 14px;
+    h2 {
+color: #1aa3ff;
+} 
+}
+@extend %border;
+clear: left;
+margin: 5px 20px 15px 5px;
+background-color: hsl(0, 0%, 90%);
+
+}
+#student1 {height: 230px;
+}
+#student2 {
+height: 240px;}
+#student3 {
+height: 300px;
+}
+
+.Container {
+height: 700px;
+width: 900px;
+padding: 15px;
+}
+
+#Ramka, #Ramka1, #Ramka2 {
+@extend %border;
+}
+#Ramka {
+padding: 5px;
+background: white;
+width: 142px;
+height: 210px;
+}
+
+
+.Photo { float: left; padding:25px 35px 5px 35px;}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+@for $i from 1 through 5 {
+#star-#{$i} {
+@include stars1;
+left: -145px - (5px * ($i - 1));
+ top: 0px;
+}
+
+#star-#{$i}:before {
+    @include stars2;
+    top: -5px;
+    left: -5px;
+}
+
+#star-#{$i}:after {
+    @include stars3;
+    top: 0px;
+    left: -10px;
+}
+
+}
+
+#stars-3 {
+@for $i from 1 through 5 {
+#star-#{$i} {
+@include stars1;
+left: -145px - (5px * ($i - 1));
+ top: 65px;
+}
+
+#star-#{$i}:before {
+    @include stars2;
+    top: -5px;
+    left: -5px;
+}
+
+#star-#{$i}:after {
+    @include stars3;
+    top: 0px;
+    left: -10px;
+}
+
+}
+}
+
+@for $j from 1 through 5 {
+
+#pentagon-#{$j} {
+    @include pentagons1;
+    left: -145px - (5px * ($j - 1)); 
+}
+#pentagon-#{$j}:before {
+ @include pentagons2; 
+}   
+}
+#pentagon-5:before {
+ border-color: transparent transparent #b3b3b3;
+ @include pentagons3; 
+}
