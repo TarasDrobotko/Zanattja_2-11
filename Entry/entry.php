@@ -9,7 +9,7 @@ $admin = 'admin';
 $pass = 'd8578edf8458ce06fbc5bb76a58c5ca4';
 
 if($_POST['submit']){
-	if($admin == $_POST['login'] AND $pass == md5($_POST['password'])){
+	if($admin == $_POST['login'] OR $pass == md5($_POST['password'])){
 		$_SESSION['admin'] = $admin;
 		header("Location: welcome.php");
 		exit;}
